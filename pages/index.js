@@ -33,6 +33,7 @@ addTodoButton.addEventListener("click", () => {
 });
 
 addTodoCloseBtn.addEventListener("click", () => {
+  
   closeModal(addTodoPopup);
 });
 
@@ -40,7 +41,7 @@ addTodoForm.addEventListener("submit", (evt) => {
   evt.preventDefault();
   const name = evt.target.name.value;
   const dateInput = evt.target.date.value;
-  addTodoForm.reset();
+  
 
   const date = new Date(dateInput);
   date.setMinutes(date.getMinutes() + date.getTimezoneOffset());
@@ -48,8 +49,9 @@ addTodoForm.addEventListener("submit", (evt) => {
   const values = { name, date, id };
   const todo = generateTodo(values);
   todosList.append(todo);
-
+  
   closeModal(addTodoPopup);
+  addTodoForm.reset();
 });
 
 initialTodos.forEach((item) => {
