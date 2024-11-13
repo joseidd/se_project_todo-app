@@ -41,17 +41,14 @@ addTodoForm.addEventListener("submit", (evt) => {
   evt.preventDefault();
   const name = evt.target.name.value;
   const dateInput = evt.target.date.value;
-  
-
-  const date = new Date(dateInput);
+   const date = new Date(dateInput);
   date.setMinutes(date.getMinutes() + date.getTimezoneOffset());
   const id = uuidv4();
   const values = { name, date, id };
   const todo = generateTodo(values);
   todosList.append(todo);
-  
   closeModal(addTodoPopup);
-  addTodoForm.reset();
+  newTodoValidator.resetValidation();
 });
 
 initialTodos.forEach((item) => {
